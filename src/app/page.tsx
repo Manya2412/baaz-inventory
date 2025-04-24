@@ -1410,16 +1410,12 @@ import DataTable, { Column } from '@/components/DataTable';
     }, []);
 
   const columns: Column<any>[] = [
-    { accessor: "component_id", header: "Component ID" },
-    { accessor: "component_name", header: "Component Name" },
-    { accessor: "subcomponent_name", header: "Subcomponent Name" },
-    { accessor: "sku_code", header: "SKU Code" },
-    { accessor: "hsn_code", header: "HSN Code" },
-    { accessor: "total_quantity", header: "Total Quantity" },
-    { accessor: "usable_quantity", header: "Usable Quantity" },
-    { accessor: "damaged_quantity", header: "Damaged Quantity" },
+    { accessor: "component_name", header: "Parent Component" },
+    { accessor: "subcomponent_name", header: "Sub Component" },
+    { accessor: "usable_quantity", header: "Usable Quantity" }, 
     { accessor: "discarded_quantity", header: "Discarded Quantity" },
-    { accessor: "last_updated", header: "Last Updated" },
+    { accessor: "damaged_quantity", header: "Damaged" },
+    { accessor: "total_quantity", header: "Total Quantity" },
   ];
 
   return <DataTable data={data} columns={columns} />;
