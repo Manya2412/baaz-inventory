@@ -9,15 +9,10 @@ import {
 } from "lucide-react";
 
 export interface Column<T> {
-  /** Unique key in data object */
   accessor: keyof T & string;
-  /** Header label */
   header: string;
-  /** Optional custom cell renderer */
   Cell?: (value: T[keyof T], row: T) => React.ReactNode;
-  /** Whether the column is sortable */
   sortable?: boolean;
-  /** Optional filter function. Default does string includes */
   filterFn?: (value: T[keyof T], filter: string) => boolean;
 }
 
@@ -29,11 +24,7 @@ interface Props<T> {
   className?: string;
 }
 
-/**
- * Generic, fully‑controlled data table with column sorting, filtering & pagination.
- * Usage:
- * const columns: Column<Inventory>[] = [...]
- * <DataTable data={data} columns={columns}/>  */
+
 export default function DataTable<T extends Record<string, any>>({
   data,
   columns,
@@ -176,7 +167,7 @@ export default function DataTable<T extends Record<string, any>>({
       </table>
 
       {/* Pagination */}
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4 mt-3">
+      <div className="flex flex-col items-center gap-4 mt-3 sm:flex-row sm:justify-center">
         <div className="flex items-center gap-1">
           <button
             onClick={() => setPage(0)}
