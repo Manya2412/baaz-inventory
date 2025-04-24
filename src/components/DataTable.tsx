@@ -89,19 +89,10 @@ export default function DataTable<T extends Record<string, any>>({
 
   return (
     <div className={`w-full overflow-x-auto ${className}`}>
-      {/* Global search */}
-      <div className="flex items-center gap-2 mb-2">
-        <input
-          type="text"
-          placeholder="Search..."
-          value={globalFilter}
-          onChange={(e) => setGlobalFilter(e.target.value)}
-          className="border rounded px-2 py-1 w-full md:w-64"
-        />
-      </div>
+      
 
       <table className="min-w-full text-sm">
-        <thead className="bg-gray-800 text-gray-100">
+        <thead className="bg-gray-800 text-white">
           <tr>
             {columns.map((col) => (
               <th
@@ -109,7 +100,7 @@ export default function DataTable<T extends Record<string, any>>({
                 className="p-3 text-left whitespace-nowrap select-none"
               >
                 <div
-                  className="flex items-center gap-1 cursor-pointer"
+                  className="flex items-center justify-center gap-1 cursor-pointer"
                   onClick={() => col.sortable && toggleSort(col.accessor)}
                 >
                   {col.header}
@@ -147,10 +138,10 @@ export default function DataTable<T extends Record<string, any>>({
           {paginated.map((row, idx) => (
             <tr
               key={idx}
-              className={idx % 2 ? "bg-gray-900" : "bg-gray-800"}
+              className={`${idx % 2 ? "bg-gray-900" : "bg-gray-800"} text-white text-center`} 
             >
               {columns.map((col) => (
-                <td key={col.accessor} className="p-3 whitespace-nowrap">
+                <td key={col.accessor} className="p-3 whitespace-nowrap text-white">
                   {col.Cell ? col.Cell(row[col.accessor], row) : row[col.accessor]}
                 </td>
               ))}
